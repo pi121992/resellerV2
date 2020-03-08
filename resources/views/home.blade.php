@@ -43,7 +43,10 @@
         @endcomponent
      </div>
      <div class="col-12 col-md-4">
-       @component('components.price',['title'=>'Master/ $3 each','price'=>'$60'])
+       @component('components.price',[
+        'title'=>'Master/ $3 each',
+        'price'=>'$60',
+        'btn'=>"Compra 20 creditos"])
        
      @endcomponent
      </div>
