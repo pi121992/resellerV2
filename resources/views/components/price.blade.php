@@ -9,7 +9,7 @@
               {{ $slot }}
             </ul>
           
-           <a class="btn btn-lg btn-block btn-primary" href="https://t.me/compraplex">Inicia hoy</a>
+           <a class="btn btn-lg btn-block btn-{{ $type ?? 'info' }}" href="{{ $url ?? 'https://t.me/compraplex' }}">{{ $btn ?? 'Inicia hoy' }}</a>
 
           </div>
         </div>
