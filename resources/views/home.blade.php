@@ -12,7 +12,7 @@
        @endcomponent
      </div>
      <div class="col-md-4">
-       @component('components.price',['title'=>'Premiun','price'=>'$17'])
+       @component('components.price',['title'=>'Premiun','price'=>'$22'])
          <li>5 creditos</li>
          <li>Tu tienes el control de tu cuenta</li>
          <li>2 conecciones simultaneas</li>
