@@ -18,7 +18,7 @@
        @component('components.price',[
         'title'=>'Basic / $5 each',
         'price'=>'$5',
-        'btn'=>"Compra 1 credito"
+        'btn'=>"Inicia con 1 credito"
 
         ])
          
@@ -28,7 +28,7 @@
        @component('components.price',[
         'title'=>'Premiun/ $4 each',
         'price'=>'$20',
-        'btn'=>"Compra 5 creditos"]
+        'btn'=>"Inicia con 5 creditos"]
         )
         
        
@@ -38,7 +38,7 @@
        @component('components.price',[
         'title'=>'Advanced/ $3.5 each',
         'price'=>'$35',
-        'btn'=>"Compra 10 creditos"
+        'btn'=>"Inicia con 10 creditos"
         ])
         @endcomponent
      </div>
@@ -46,7 +46,7 @@
        @component('components.price',[
         'title'=>'Master/ $3 each',
         'price'=>'$60',
-        'btn'=>"Compra 20 creditos"])
+        'btn'=>"Inicia con 20 creditos"])
        
      @endcomponent
      </div>
