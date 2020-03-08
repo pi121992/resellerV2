@@ -1,7 +1,7 @@
 
         <div class="card mb-4 box-shadow">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">{{ $title }}</h4>
+            <em> <h4 class="my-0 font-weight-normal">{{ $title }}</h4></em>
           </div>
           <div class="card-body">
             <h1 class="card-title pricing-card-title">{{ $price }} <small class="text-muted"></small></h1>
