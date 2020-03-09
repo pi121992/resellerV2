@@ -52,18 +52,24 @@
                         <a href="/MyUsers" class="nav-link"><i class="fas fa-address-card"></i> My Users</a>
                        @endif
                        
-                       @if(Request::is('RigisterNew'))
+                       @if(Request::is('RegisterNew'))
                        
-                       <a href="/RigisterNew" class="nav-link 
-                       active"><i class="fas fa-plus-circle"></i> Rigister New</a>
+                       <a href="/RegisterNew" class="nav-link 
+                       active"><i class="fas fa-plus-circle"></i> Agregar usuario</a>
                        @else
-                        <a href="/RigisterNew" class="nav-link">
+                        <a href="/RegisterNew" class="nav-link">
                         <i class="fas fa-plus-circle"></i> 
-                        Rigister New</a>
+                        Agregar usuario</a>
                        @endif
-                       <a href="/demo" class="nav-link">
+
+                       @if(Request::is('demo'))
+                         <a href="/demo" class="nav-link active">
+                          @else
+                          <a href="/demo" class="nav-link">
+                       @endif
+                       
                         <i class="fas fa-film"></i>
-                        Demos</a>
+                        Demo</a>
                        
 
                     </ul>

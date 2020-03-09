@@ -21,4 +21,4 @@ Route::resource('MyUsers','myUsersController')->middleware('auth');
 Route::resource('edit','editController')->middleware('auth');
 Route::resource('demo', 'demoController');
 
-Route::resource('RigisterNew', 'plexAddController')->middleware('auth');
+Route::resource('RegisterNew', 'plexAddController')->middleware('auth');

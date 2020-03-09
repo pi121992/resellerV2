@@ -5,33 +5,33 @@
     @csrf
      <div class="form-group">
         <i class="fas fa-at"></i>
-         <label class="text-muted">Email PLEX:</label>
+         <label class="text-muted">Correo del usuario:</label>
          <input type="text" name="email" required name="" class="form-control" placeholder="Enter Email">
-         <small>This email has to be register in <a href="https://plex.tv">PLEX</a></small>
+         <small>Este correo tiene que estar registrado en  <a href="https://plex.tv">PLEX.TV</a></small>
      </div>
      <div class="form-group">
         <i class="fas fa-calendar-day"></i>
-         <label class="text-muted">Add months:</label>
+         <label class="text-muted">Agregar paquete:</label>
          <select class="form-control" name="month">
-         	<option value="1">1 Month</option> 
-         	<option value="3">3 Month</option> 
-         	<option value="6">6 Month</option> 
-         	<option value="12">12 Month</option> 
+         	<option value="1">1 Mes</option> 
+         	<option value="3">3 Meses</option> 
+         	<option value="6">6 Meses</option> 
+         	<option value="12">12 Meses</option> 
          </select>
          <small></small>
      </div>
      <div class="form-group">
         <i class="fas fa-user"></i>
-         <label class="text-muted">Name:</label>
-         <input type="text" name="name" required class="form-control" placeholder="Enter Name">
-         <small>Name Plex User</small>
+         <label class="text-muted">Nombre:</label>
+         <input type="text" name="name" required class="form-control" placeholder="Nombre del usuario">
+        
      </div>
 
      <div class="form-group">
          <i class="fas fa-sticky-note"></i>
          <label class="text-muted">Note:</label>
-         <input type="text" name="note" required class="form-control" placeholder="Enter Note ">
-         <small>Note For User</small>
+         <input type="text" name="note" required class="form-control" placeholder="Comentarios extras">
+         
      </div>
 
     <button type="submit" class="btn btn-primary">

@@ -18,7 +18,9 @@
     <div class="form-group">
         <label for="email">correo de plex:</label>
         <input id="email" class="form-control" type="email" name="emailDemo" placeholder=" ingresa aqui el correo q recibira el demo">
+        <small class="text-success">Recuerda que este correo tiene que estar registrado en <a href="https://plex.tv">plex.tv</a></small>
     </div>
+
     <button type="submit" class="btn btn-primary"> Enviar demo</button>
     
     <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -58,20 +60,15 @@
 </form>
 
        
-       <div class="row font-weight-bold text-white align-content-center text-center mt-4">
-           <div class="col-12 col-md-4 bg-warning text-muted">Demos:No estas  Registrado:1</div>
-           <div class="col-12 col-md-4 bg-info">Demos:si estasRegistrado:2</div>
-           <div class="col-12 col-md-4 bg-success">Demos:si estas Registrado y con creditos:El doble de lo que tengas en creditos</div>
-       </div>
+       
 
-       <div class="row">
-            <div class="col-12 text-center">
-                <h1>Mis Demos:</h1>
-            </div>
-       </div>
-
-       <div class="row">
+      
+                 @if (isset($myUsersDemo[0]))
+                   <h2>Mis Demos:</h2>
+                 @endif
+                 <div class="row">
                 @foreach ($myUsersDemo as $user)
+
                     <div class="col-md-4">
                         @component(
                             'components.card',
