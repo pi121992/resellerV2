@@ -46,7 +46,7 @@
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
           <div class="form-group pt-4">
-              <div class="row offset-3">
+              <div class="row offset-md-3">
               @for ($i = 0; $i < count($library[1]); $i++)
                   @php
                     $checked='checked';
