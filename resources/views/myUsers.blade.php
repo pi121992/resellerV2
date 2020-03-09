@@ -5,7 +5,8 @@
 @endphp
 
 @section('content')
-
+<h1 class="text-danger"><em>Inicia tu negocio con plex</em> </h1>
+   <h2 class="text-darks">My users:</h2>
 <div class="alert-{{ $deleteStatus ?? ''}}">
 	@if (isset($deleteStatus) && $deleteStatus=="danger")
 		Eliminastes a:{{ $name }}

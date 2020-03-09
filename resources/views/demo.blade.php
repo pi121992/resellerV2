@@ -2,6 +2,9 @@
 
 @section('content')
 
+<h1 class="text-danger"><em>Inicia tu negocio con plex</em> </h1>
+   <h2 class="text-darks">Demo:</h2>
+
 @if (isset($_GET['msg']) && isset($_GET['type']) )
     @component('components.alertEdit',['type'=>$_GET['type']])
         {{strtoupper ($_GET['msg'])}}
@@ -13,8 +16,8 @@
 <form method="POST">
     @csrf
     <div class="form-group">
-        <label for="email">Emai:</label>
-        <input id="email" class="form-control" type="email"" name="emailDemo" placeholder="Email demo plex">
+        <label for="email">correo de plex:</label>
+        <input id="email" class="form-control" type="email" name="emailDemo" placeholder=" ingresa aqui el correo q recibira el demo">
     </div>
     <button type="submit" class="btn btn-primary"> Enviar demo</button>
     
