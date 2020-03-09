@@ -64,7 +64,7 @@ class demoController extends Controller
          if(!isset($buscar[0]->email)){
             if($plex->email_is_valid($request->emailDemo)){
                 if($plex->add_email($request->emailDemo,$request->library)){
-                   $demoDb->date=date('d-m-y h:i:s');
+                   $demoDb->date=$new_time = date("Y-m-d h:i:s", strtotime('+1 hours'));
                    $demoDb->email=$request->emailDemo;
                    $demoDb->ip=$clientIP;
                    $demoDb->plexEmailId=$plex->get_id_pending($request->emailDemo);

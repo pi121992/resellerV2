@@ -20,5 +20,6 @@ Auth::routes();
 Route::resource('MyUsers','myUsersController')->middleware('auth');
 Route::resource('edit','editController')->middleware('auth');
 Route::resource('demo', 'demoController');
+Route::get('checked','checked@index');
 
 Route::resource('RegisterNew', 'plexAddController')->middleware('auth');
