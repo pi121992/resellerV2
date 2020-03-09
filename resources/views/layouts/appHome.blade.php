@@ -42,14 +42,14 @@
                        
                      
                        @if(Request::is('/'))
-                       <a href="/" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                       <a href="/" class="nav-link active"><i class="fas fa-home"></i> Inicio</a>
                        @else
-                        <a href="/" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                        <a href="/" class="nav-link"><i class="fas fa-home"></i> Inicio</a>
                        @endif
                        @if(Request::is('MyUsers'))
-                       <a href="/MyUsers" class="nav-link active"><i class="fas fa-address-card"></i> My Users</a>
+                       <a href="/MyUsers" class="nav-link active"><i class="fas fa-address-card"></i> Mis usuarios</a>
                        @else
-                        <a href="/MyUsers" class="nav-link"><i class="fas fa-address-card"></i> My Users</a>
+                        <a href="/MyUsers" class="nav-link"><i class="fas fa-address-card"></i> Mis usuarios</a>
                        @endif
                        
                        @if(Request::is('RegisterNew'))
