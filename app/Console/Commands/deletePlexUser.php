@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\demoModel;
-use App\plexUser;
 use App\plexAdmin\plex;
 class deletePlexUser extends Command
 {

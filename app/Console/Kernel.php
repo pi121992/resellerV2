@@ -4,7 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use App\demoModel;
+use App\plexAdmin\plex;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -24,8 +25,24 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('user:delete')->everyMinute();
-        //          ->hourly();
+         //$schedule->command('user:delete')->everyMinute();
+        $schedule->call(function () {
+           $plex=new plex;
+        $date=date('Y-m-d h:i:s');
+        /*$ipInfo = file_get_contents('http://ip-api.com/json');
+        $ipInfo = json_decode($ipInfo);
+       $ipInfo->timezone;*/
+
+        $usuariosVencidos=demoModel::where('date',"<",$date)->get();
+        for ($i=0; $i < count($usuariosVencidos); $i++) { 
+            $eliminar=demoModel::find($usuariosVencidos[$i]->id);
+            $plexID=$eliminar->plexEmailId;
+            $plex->delete_user($plexID);
+            echo "Se elimino a ".$eliminar->email;
+            $eliminar->delete();
+
+        }
+        })->everyMinute();
     }
 
     /**
