@@ -9,10 +9,10 @@
 
 
 	<div class="row text-center">
-        <div class="col-12 d-md-none">
+        <div class="col-12 d-lg-none">
         	<div id="dataR"></div>
         </div>
-		<div class="col-12 d-md-none">
+		<div class="col-12 d-lg-none">
 			<input type="button" class="btn-block btn-primary text-uppercase p-2 mt-3" value="Girar" id='Girar' />
 
 			<a href="go:ruleta"> <input type="button" class="btn-block btn-warning text-uppercase p-2 mt-3" value="Otra vez" style="float:center;" id='intento' /></a>
@@ -20,7 +20,7 @@
 
 		<div class="col-12 ">
 			<div class="row">
-				<div class="col-12 d-md-none" >
+				<div class="col-12 offset-sm-4 col-sm-4 d-lg-none" >
 					<canvas id="canvas" style="width: 100%;" class="canvas" width="500" height="500"></canvas>
 				</div>
 			</div>
@@ -28,7 +28,7 @@
 			<script  src="http://tecnoplex.net/ruleta/js/index.js"></script>
 		</div>
         
-        <div class="col-12 d-md-none">
+        <div class="col-12  d-lg-none">
         	<input type="button" class="btn-block" value="Reclamar Premio" style="width: 60%; left: 20%;padding: 10px;border-radius: 5px; border-color: red; position: absolute; top: 88%; display: flex; justify-content: center; z-index: 10;" />
         </div>
 	</div>
