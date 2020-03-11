@@ -21,7 +21,12 @@ $valor=$request->valor;
 preg_match_all('|(\d+).*?(\w+)|', $valor, $matches);
    $tiempo=$matches[1][0];
    $formato=$matches[2][0];
-   $myTime=intval($_SESSION['timeAdd']);
+   if(isset($_SESSION['timeAdd'])){
+   	$myTime=intval($_SESSION['timeAdd']);
+   }else{
+   	$_SESSION['timeAdd']=0;
+   }
+   
    if($formato=="H"){
      $totalMin=$_SESSION['timeAdd']=$myTime+$tiempo*60;
      
