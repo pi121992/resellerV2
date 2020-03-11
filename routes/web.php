@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 
 Route::get('ruleta', 'ruletaController@index');
+Route::get('ruleta/juega', 'ruletaController@juega');
+
 Route::post('ruleta','ruletaController@ajaxRequestPost');
 Auth::routes();
 

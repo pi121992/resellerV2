@@ -7,7 +7,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
    
 
-<div class="container">
+
 	<div class="row text-center">
         <div class="col-12 d-md-none">
         	<div id="dataR"></div>
@@ -32,7 +32,7 @@
         	<input type="button" class="btn-block" value="Reclamar Premio" style="width: 60%; left: 20%;padding: 10px;border-radius: 5px; border-color: red; position: absolute; top: 88%; display: flex; justify-content: center; z-index: 10;" />
         </div>
 	</div>
-</div>
+
 
  
 

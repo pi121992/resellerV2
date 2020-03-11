@@ -10,7 +10,12 @@ class ruletaController extends Controller
     public function index(){
          session_start();
          //session_destroy();
-    	 return view('ruleta');
+    	 return view('ruletaIndex');
+    }
+
+
+    public function juega(){
+    	return view('ruleta');
     }
 
     public function ajaxRequestPost(Request $request){
