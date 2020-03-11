@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('home');
 });
 
+
+
+Route::get('ruleta', 'ruletaController@index');
+Route::post('ruleta','ruletaController@ajaxRequestPost');
 Auth::routes();
 
 
@@ -21,5 +25,6 @@ Route::resource('MyUsers','myUsersController')->middleware('auth');
 Route::resource('edit','editController')->middleware('auth');
 Route::resource('demo', 'demoController');
 Route::get('checked','checked@index');
+
 
 Route::resource('RegisterNew', 'plexAddController')->middleware('auth');
