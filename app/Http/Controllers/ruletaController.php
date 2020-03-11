@@ -24,7 +24,7 @@ preg_match_all('|(\d+).*?(\w+)|', $valor, $matches);
    if(isset($_SESSION['timeAdd'])){
    	$myTime=intval($_SESSION['timeAdd']);
    }else{
-   	$_SESSION['timeAdd']=0;
+   	$_SESSION['timeAdd']=$tiempo;
    }
    
    if($formato=="H"){
