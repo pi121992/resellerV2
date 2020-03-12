@@ -38,6 +38,6 @@ preg_match_all('|(\d+).*?(\w+)|', $valor, $matches);
    }else{
    	 $totalMin=$_SESSION['timeAdd']=$myTime+$tiempo;
    }
-   return  "Total: ".(round($totalMin/60,1))." Hora".$_SERVER['HTTP_USER_AGENT'];
+   return  "Total: ".(round($totalMin/60,1))." Hora";
 }
 }
