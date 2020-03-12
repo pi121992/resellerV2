@@ -4,13 +4,24 @@
 <div class="row text-center">
 
 	<div class="col-12 d-lg-none">
-    	<div id="dataR"></div>
+    	<div id="dataR" class="alert-primary p-2 font-weight-bold text-danger text-center"></div>
     </div>
 
     <div class="col-12 d-lg-none">
-		<input type="button" class="btn-block btn-primary text-uppercase p-2 mt-3" value="Girar" id='Girar' />
+		<input type="button" class="btn-block btn-primary font-weight-bold text-white p-2 mt-3" value="Girar y Ganar!!" id='Girar' />
 
-		<a href="go:ruleta"> <input type="button" class="btn-block btn-warning text-uppercase p-2 mt-3" value="Otra vez" style="float:center;" id='intento' /></a>
+
+       <div id='intento' class="row">
+           <div class="col-6">
+           	  <a href="go:ruleta"> <input type="button" class="btn-block btn-warning font-weight-bold text-white p-2 mt-3" value="Jugar otra vez" style="float:center;"  /></a>
+          </div>
+
+          <div class="col-6 btn-block btn-success  p-2 mt-3 ">
+          	  <a href="go:reclama" class="text-decoration-none font-weight-bold text-white">Reclamar credito</a>
+          </div>
+       	  
+       </div>
+		
 	</div>
 
 	<div class="col-12 ">
@@ -18,13 +29,11 @@
 			<div class="col-12 offset-sm-3 col-sm-6 d-lg-none" >
 				<canvas id="canvas" style="width: 100%;" class="canvas" width="500" height="500"></canvas>
 				<script  src="http://tecnoplex.net/ruleta/js/index.js"></script>
+				
 			</div>
 		</div>
 	</div>
         
-    <div class="col-12 ">
-    	<button class="btn-block btn-success p-2">Reclama</button>
-    </div>
 </div>
 
 

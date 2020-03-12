@@ -18,6 +18,10 @@ class ruletaController extends Controller
     	return view('ruleta');
     }
 
+    public function ayuda(){
+      return view('ruletaAyuda');
+    }
+
     public function ajaxRequestPost(Request $request){
     	session_start();
         
@@ -38,6 +42,6 @@ preg_match_all('|(\d+).*?(\w+)|', $valor, $matches);
    }else{
    	 $totalMin=$_SESSION['timeAdd']=$myTime+$tiempo;
    }
-   return  "Total: ".(round($totalMin/60,1))." Hora";
+   return  "Total: ".(round($totalMin/60,1))." Horas";
 }
 }
