@@ -4,7 +4,7 @@
 <div class="row text-center">
 
 	<div class="col-12 d-lg-none">
-    	<div id="dataR" class="alert-primary p-2 font-weight-bold text-danger text-center"></div>
+    	<div id="dataR" class="alert-secondary p-2 font-weight-bold text-muted text-center"></div>
     </div>
 
     <div class="col-12 d-lg-none">
@@ -17,7 +17,9 @@
           </div>
 
           <div class="col-6 btn-block btn-success  p-2 mt-3 ">
-          	  <a href="go:reclama" class="text-decoration-none font-weight-bold text-white">Reclamar credito</a>
+          	  
+
+          	  <a href="go:reclama" class="text-decoration-none font-weight-bold text-white">Reclamar Horas</a>
           </div>
        	  
        </div>
