@@ -30,7 +30,22 @@ class checked extends Controller
 
         $usuariosGratisVencido=freeModel::where('date',"<",$datePlexFree)->get();
 
+
+        $playing= $plex->playing();
+
+        $file=file_get_contents($plex->ip."/status/sessions/all?X-Plex-Token=".$plex->token);
+        
         for ($i=0; $i < count($usuariosGratisVencido); $i++) { 
+            $email_id=$usuariosGratisVencido[$i]->email_id;
+
+            preg_match_all('|User\sid="'.$email_id.'".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches);
+
+            if(isset($matches[1][$i])){
+                $plex->stop($matches[1][$i],"No tienes HORAS diponibles recuerda abrir APP TECNOPLEX para ganar mas horas");
+            }
+            
+
+            echo $usuariosGratisVencido[$i]->email;
             $diasPasados=strtotime($datePlexFree) - strtotime($usuariosGratisVencido[$i]->date);
             $diasPasados=round($diasPasados/60/60/24,0);
             if($diasPasados>3){

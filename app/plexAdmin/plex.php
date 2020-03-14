@@ -7,6 +7,13 @@ class plex{
     public $token="cpbG1drUFav1XMbEiMUc";
     public $ip="http://95.217.42.31:32400";
 
+    public function playing(){
+        $file=file_get_contents($this->ip."/status/sessions/all?X-Plex-Token=".$this->token);
+        preg_match_all('|User\sid="(.*?)".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches);
+
+        return $matches;
+    }
+
     function email_is_valid($email,$method = 'POST', $args = false)
 		{
 			$url='https://plex.tv/api/users/validate?invited_email='.$email.'&X-Plex-Token='.$this->token;
@@ -63,6 +70,17 @@ return $curlout = curl_exec($ch);
 curl_close($ch);
 }
 
+
+
+
+function stop($id,$msg)
+    {
+        $msg2=str_replace(" ", "%20", $msg);
+        $url=$this->ip."/status/sessions/terminate?sessionId=".$id."&reason=".$msg2."&X-Plex-Token=".$this->token;
+         
+        return $this->send_request($url,"GET");
+
+    }
 
 function delete_user($id)
 {
