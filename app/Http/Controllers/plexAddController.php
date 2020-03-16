@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\plexUser;
 use App\User;
 use App\plexAdmin\plex;
+use App\demoModel;
 
 
 class plexAddController extends Controller
@@ -45,8 +46,9 @@ d     * @return \Illuminate\Http\Response
     {   $plex=new plex;
         $msg;
         $msgState="";
+        $credits=Auth::user()->credits;
         if($plex->email_is_valid($request->email)){
-            $credits=Auth::user()->credits;
+            
             if(intval($credits)>0 && intval($credits)>=intval($request->month) ){
 
                 if($plex->add_email($request->email,$request->library)){
@@ -81,10 +83,42 @@ d     * @return \Illuminate\Http\Response
                     
                 }else{
                  //   echo "Ya exite en este servidor";
-                    $msg= "Ya exite en este servidor";
+                    echo $msg= "Ya exite en este servidor";
                     $msgState="warning";
+                    if(intval($credits)>0 && intval($credits)>=intval($request->month) ){
+
+                    $userMaster=User::find(Auth::user()->id);
+                    $userMaster->credits=Auth::user()->credits- intval($request->month);
+                    $userMaster->save();
                     
+                    $plexUser=new plexUser;
                     $resultadoUser=plexUser::where('email',$request->email)->get();
+                    @$resultadoUserEmail=$resultadoUser[0]->email;
+                    if($resultadoUserEmail==""){
+                        if($resultadoUserEmail!=$request->email){
+                    if($resultadoUser=demoModel::where('email',$request->email)->get()){
+                       $plexUserID=$resultadoUser[0]->plexEmailId;
+                       
+                         $effectiveDate = strtotime("+".$request->month." months", strtotime(date("y-m-d")));
+                            $time = date("y-m-d", $effectiveDate);
+                            $plexUser->plex_id=$plexUserID;
+                            $plexUser->email=$request->email;
+                            $plexUser->name=$request->name;
+                            $plexUser->coment=$request->note;
+                            $plexUser->seller=Auth::user()->email;
+                            $plexUser->date=$time;
+                            $plexUser->save();
+                             $removerDemo=demoModel::find($resultadoUser[0]->id);
+                        $removerDemo->delete();
+
+                           $msg= "Se paso de Demo A cuenta pagada";
+                    $msgState="info";
+                             }
+                         }
+                     }
+
+
+                    }
                  
 
 
