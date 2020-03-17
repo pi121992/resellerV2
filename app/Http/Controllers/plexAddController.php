@@ -157,8 +157,14 @@ d     * @return \Illuminate\Http\Response
                 
             }else{
               //  echo "No tienes Creditos";
-                $msg= "No tienes Creditos";
-                    $msgState="danger";
+                if($admin!=1){
+                   $msg= "No tienes Creditos";
+                    $msgState="danger"; 
+                }else{
+                    $msg= "agregado";
+                    $msgState="success";
+                }
+                
 
                 
              
