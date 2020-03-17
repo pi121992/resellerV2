@@ -22,11 +22,8 @@ d     * @return \Illuminate\Http\Response
     {
 
         $plex=new plex;
-
-        $admin=Auth::user()->admin;
-
         $library=$plex->library();
-        return view('addPlex',compact('library','admin'));
+        return view('addPlex',compact('library'));
     }
 
     /**
@@ -50,34 +47,9 @@ d     * @return \Illuminate\Http\Response
         $msg;
         $msgState="";
         $credits=Auth::user()->credits;
-        $admin=Auth::user()->admin;
         if($plex->email_is_valid($request->email)){
-
-           if($admin!=0){
-
-                $plex->add_email($request->email,$request->library);
-                 $msg= "Invitacion enviada";
-                 $msgState="success";
-                 $plexUserID=$plex->get_id_pending($request->email);
-                  $plexUser=new plexUser;
-                    $resultadoUser=plexUser::where('email',$request->email)->get();
-                    @$resultadoUserEmail=$resultadoUser[0]->email;
-                    if($resultadoUserEmail==""){
-                        if($resultadoUserEmail!=$request->email){
-                            $plexUser->plex_id=$plexUserID;
-                            $plexUser->email=$request->email;
-                            $plexUser->name=$request->name;
-                            $plexUser->coment=$request->note;
-                            $plexUser->seller=Auth::user()->email;
-                            $plexUser->date=$request->month;
-                            $plexUser->save();
-                        }
-                    
-                      }
-
-           }
             
-            if(intval($credits)>0 && intval($credits)>=intval($request->month) && $admin!=1){
+            if(intval($credits)>0 && intval($credits)>=intval($request->month) ){
 
                 if($plex->add_email($request->email,$request->library)){
 
@@ -157,14 +129,8 @@ d     * @return \Illuminate\Http\Response
                 
             }else{
               //  echo "No tienes Creditos";
-                if($admin!=1){
-                   $msg= "No tienes Creditos";
-                    $msgState="danger"; 
-                }else{
-                    $msg= "agregado";
-                    $msgState="success";
-                }
-                
+                $msg= "No tienes Creditos";
+                    $msgState="danger";
 
                 
              
