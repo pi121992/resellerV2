@@ -1,6 +1,8 @@
 @extends('layouts.appHome')
 
 @section('content')
+
+
  <form method="POST">
     @csrf
      <div class="form-group">
@@ -12,13 +14,20 @@
      <div class="form-group">
         <i class="fas fa-calendar-day"></i>
          <label class="text-muted">Agregar paquete:</label>
+
+         @if ($admin)
+         <input type="date" name="month" class="form-control">
+
+        @else
          <select class="form-control" name="month">
          	<option value="1">1 Mes</option> 
          	<option value="3">3 Meses</option> 
          	<option value="6">6 Meses</option> 
          	<option value="12">12 Meses</option> 
          </select>
-         <small></small>
+
+         @endif
+       
      </div>
      <div class="form-group">
         <i class="fas fa-user"></i>
