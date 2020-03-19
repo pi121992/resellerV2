@@ -10,8 +10,21 @@
     	</div>
     @endif
   <div class="row">
-  	<div class="col-12">
-  		<a href="go:ruleta" class="btn btn-primary d-block">Entra y Gana!!</a>
-  	</div>
+    <div class="col-12 text-center pb-4">
+         <button type="button" class="btn btn-dark">
+          Cuentas disponibles <span class="badge badge-light">{{ $cuentasDisponibles }}</span>
+        </button>
+    </div>
+     @if ($cuentasDisponibles>0)
+       <div class="col-12">
+        <a href="go:ruleta" class="btn btn-primary d-block">Entra y Gana!!</a>
+       </div>
+      @else
+        <div class="col-12 alert-danger">
+          Lo Siento pero no hay cuantas Gratis Disponibles En este momento
+          si deseas una cuenta premium ve a https://compraplex.com
+       </div>
+     @endif
+  	
   </div>
 @endsection

@@ -12,10 +12,17 @@ class ruletaController extends Controller
 
          session_start();
          //session_destroy();
+         $plex=new plex;
+         $file=file_get_contents("https://plex.tv/api/users?X-Plex-Token=".$plex->token);
+         preg_match_all('|username="(.*?)"|', $file, $matches);
+
+          $cuentasDisponibles=100-count($matches[1])-1;
+        
          $_SESSION['userAgent']=$_SERVER['HTTP_USER_AGENT'];
 
          if($_SESSION['userAgent']=="pitunti"){
-            return view('ruletaIndex');
+
+            return view('ruletaIndex',compact('cuentasDisponibles'));
          }else{
         return "<h1>NO ALLOWED</h1>";
       }
