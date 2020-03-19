@@ -81,6 +81,12 @@
                        
                         <i class="fas fa-film"></i>
                         Demo</a>
+
+
+                         <a href="https://play.google.com/store/apps/details?id=tecnoplex.appxqz&hl=es_US" class="nav-link">
+                          <i class="fab fa-google-wallet"></i>
+                        PLEX GRATIS</a>
+
                        
 
                     </ul>
