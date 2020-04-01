@@ -30,7 +30,7 @@
 		<div class="row">
 			<div class="col-12 offset-sm-3 col-sm-6 d-lg-none" >
 				<canvas id="canvas" style="width: 100%;" class="canvas" width="500" height="500"></canvas>
-				<script  src="http://tecnoplex.net/ruleta/js/index.js"></script>
+				<script type="text/javascript" src="{{ URL::asset('js/index.js') }}"></script>
 				
 			</div>
 		</div>
