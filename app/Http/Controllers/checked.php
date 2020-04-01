@@ -28,26 +28,31 @@ class checked extends Controller
 
     	}
 
-        $usuariosGratisVencido=freeModel::where('date',"<",$datePlexFree)->get();
+       echo  $usuariosGratisVencido=freeModel::where('date',"<",$datePlexFree)->get();
 
 
         $playing= $plex->playing();
 
-        $file=file_get_contents($plex->ip."/status/sessions/all?X-Plex-Token=".$plex->token);
-        
+         $file=file_get_contents($plex->ip."/status/sessions/all?X-Plex-Token=".$plex->token);
+         preg_match_all('|User\sid="(.*?)".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches1);
+
+        for ($i=0; $i < count($matches1[1]); $i++) { 
+            $email_id=$matches1[1][$i];
+             $usuariosGratisVencido=freeModel::where('date',"<",$datePlexFree)->where('email_id',$email_id)->get();
+
+             @$pararID=$usuariosGratisVencido[$i]->email_id;
+             preg_match_all('|User\sid="('.$pararID.')".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches);
+            $plex->stop(@$matches[2][0],"No tienes HORAS diponibles recuerda abrir APP TECNOPLEX para ganar mas horas");  
+
+
+        }
+
         for ($i=0; $i < count($usuariosGratisVencido); $i++) { 
-            $email_id=$usuariosGratisVencido[$i]->email_id;
-
-            preg_match_all('|User\sid="'.$email_id.'".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches);
-
-            if(isset($matches[1][$i])){
-                $plex->stop($matches[1][$i],"No tienes HORAS diponibles recuerda abrir APP TECNOPLEX para ganar mas horas");
-            }
             
-
-            echo $usuariosGratisVencido[$i]->email;
             $diasPasados=strtotime($datePlexFree) - strtotime($usuariosGratisVencido[$i]->date);
+
             $diasPasados=round($diasPasados/60/60/24,0);
+
             if($diasPasados>3){
                 $email_id=$usuariosGratisVencido[$i]->email_id;
                 $usuario_id=$usuariosGratisVencido[$i]->id;
