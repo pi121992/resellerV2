@@ -42,7 +42,7 @@
  
 
 
-<audio id="ruleraSound" src="http://tecnoplex.net/ruleta/ruleraSound.mp3" preload="none" class="d-none" controls></audio>
+<audio id="ruleraSound" src="https://compraplex.com/js/ruleraSound.mp3" preload="none" class="d-none" controls></audio>
 
 
 <script type="text/javascript">
