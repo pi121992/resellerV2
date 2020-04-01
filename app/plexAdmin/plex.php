@@ -5,7 +5,7 @@ namespace App\plexAdmin;
 class plex{
 
     public $token="VMJJ_GQ8RXZyT8hiwgT2";
-    public $ip="http://54.39.131.107:3240";
+    public $ip="http://54.39.131.107:32400";
 
     public function playing(){
         $file=file_get_contents($this->ip."/status/sessions/all?X-Plex-Token=".$this->token);
