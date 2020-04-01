@@ -28,38 +28,53 @@ class checked extends Controller
 
     	}
 
-       echo  $usuariosGratisVencido=freeModel::where('date',"<",$datePlexFree)->get();
 
 
-        $playing= $plex->playing();
+        
+
+
+     //var_dump($playing= $plex->playing());
 
          $file=file_get_contents($plex->ip."/status/sessions/all?X-Plex-Token=".$plex->token);
          preg_match_all('|User\sid="(.*?)".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches1);
 
         for ($i=0; $i < count($matches1[1]); $i++) { 
             $email_id=$matches1[1][$i];
+
              $usuariosGratisVencido=freeModel::where('date',"<",$datePlexFree)->where('email_id',$email_id)->get();
 
-             @$pararID=$usuariosGratisVencido[$i]->email_id;
-             preg_match_all('|User\sid="('.$pararID.')".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches);
-            $plex->stop(@$matches[2][0],"No tienes HORAS diponibles recuerda abrir APP TECNOPLEX para ganar mas horas");  
+             for ($m=0; $m < count($usuariosGratisVencido); $m++) { 
+                  $pararID=$usuariosGratisVencido[$m]->email_id;
+
+                   preg_match_all('|User\sid="('.$pararID.')".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches);
+            echo $plex->stop($matches[2][0],"No tienes HORAS diponibles recuerda abrir APP TECNOPLEX para ganar mas horas"); 
+             }
+          
+             
+             
 
 
         }
 
-        for ($i=0; $i < count($usuariosGratisVencido); $i++) { 
-            
-            $diasPasados=strtotime($datePlexFree) - strtotime($usuariosGratisVencido[$i]->date);
 
-            $diasPasados=round($diasPasados/60/60/24,0);
+      $usuariosGratisVencidoAll=freeModel::where('date',"<",$datePlexFree)->get();
+
+        for ($i=0; $i < count($usuariosGratisVencidoAll); $i++) { 
+            
+
+            $diasPasados=strtotime($datePlexFree) - strtotime($usuariosGratisVencidoAll[$i]->date);
+
+          $diasPasados=round($diasPasados/60/60/24,0);
+
+          echo $i;
 
             if($diasPasados>3){
-                $email_id=$usuariosGratisVencido[$i]->email_id;
-                $usuario_id=$usuariosGratisVencido[$i]->id;
+                $email_id=$usuariosGratisVencidoAll[$i]->email_id;
+                $usuario_id=$usuariosGratisVencidoAll[$i]->id;
                 $borarUsuario=freeModel::find($usuario_id);
                 $borarUsuario->delete();
                 $plex->delete_user($email_id);
-                echo "Borrado ".$usuariosGratisVencido[$i]->email;;
+                echo "Borrado ".$usuariosGratisVencidoAll[$i]->email;;
             }
 
             
