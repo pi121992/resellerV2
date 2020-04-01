@@ -47,7 +47,9 @@ class checked extends Controller
                   $pararID=$usuariosGratisVencido[$m]->email_id;
 
                    preg_match_all('|User\sid="('.$pararID.')".*?\n.*\n.Session\sid="(.*?)"|', $file, $matches);
-            echo $plex->stop($matches[2][0],"No tienes HORAS diponibles recuerda abrir APP TECNOPLEX para ganar mas horas"); 
+             $plex->stop($matches[2][0],"No tienes HORAS diponibles recuerda abrir APP TECNOPLEX para ganar mas horas"); 
+
+             echo "Se detuvo a ".$usuariosGratisVencido[$m]->email;
              }
           
              
@@ -66,8 +68,6 @@ class checked extends Controller
 
           $diasPasados=round($diasPasados/60/60/24,0);
 
-          echo $i;
-
             if($diasPasados>3){
                 $email_id=$usuariosGratisVencidoAll[$i]->email_id;
                 $usuario_id=$usuariosGratisVencidoAll[$i]->id;
@@ -76,6 +76,7 @@ class checked extends Controller
                 $plex->delete_user($email_id);
                 echo "Borrado ".$usuariosGratisVencidoAll[$i]->email;;
             }
+
 
             
         }
