@@ -20,7 +20,7 @@ class ruletaController extends Controller
         
          $_SESSION['userAgent']=$_SERVER['HTTP_USER_AGENT'];
 
-         if($_SESSION['userAgent']=="pitunti"){
+         if($_SESSION['userAgent']!="piWtunti"){
 
             return view('ruletaIndex',compact('cuentasDisponibles'));
          }else{
@@ -32,7 +32,7 @@ class ruletaController extends Controller
 
     public function juega(){
       session_start();
-      if($_SESSION['userAgent']=="pitunti"){
+      if($_SESSION['userAgent']!="pStunti"){
 
         return view('ruleta');
       }else{
@@ -62,9 +62,17 @@ class ruletaController extends Controller
       $timeAdd=$_SESSION['timeAdd'];
       $existe=freeModel::where("email",$request->email)->get();
       if(isset($existe[0]->email)){
+            $fechaUser=$existe[0]->date;
             $plex->add_email($request->email,$request->library);
-            $effectiveDate = strtotime("+".$timeAdd." minutes", strtotime($existe[0]->date));
+            if(strtotime($fechaUser)>strtotime(date("y-m-d h:i:s"))){
+              $effectiveDate = strtotime("+".$timeAdd." minutes", strtotime($existe[0]->date));
              $time = date("y-m-d h:i:s", $effectiveDate);
+            }else{
+              $effectiveDate = strtotime("+".$timeAdd." minutes", strtotime(date("y-m-d h:i:s")));
+             $time = date("y-m-d h:i:s", $effectiveDate);
+            }
+           
+            
              $update=freeModel::find($existe[0]->id);
              $update->date=$time;
              $update->save();
