@@ -4,7 +4,7 @@ namespace App\plexAdmin;
 
 class plex{
 
-    public $token="cpbG1drUFav1XMbEiMUc";
+    public $token="VMJJ_GQ8RXZyT8hiwgT2";
     public $ip="http://95.217.42.31:32400";
 
     public function playing(){
