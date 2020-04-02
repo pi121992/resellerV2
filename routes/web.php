@@ -20,7 +20,15 @@ Route::get('ruleta', 'ruletaController@index');
 Route::get('ruleta/juega', 'ruletaController@juega');
 Route::get('ruleta/ayuda', 'ruletaController@ayuda');
 Route::get('ruleta/reclama', 'ruletaController@reclama');
+Route::get('luz/{estado}', function($estado) {
+    $file=fopen("luz.txt", "w");
+    fwrite($file, $estado);
+
+    echo file_get_contents("luz.txt");
+
+});
 Route::post('ruleta/reclama', 'ruletaController@store');
+
 
 Route::post('ruleta','ruletaController@ajaxRequestPost');
 Auth::routes();
