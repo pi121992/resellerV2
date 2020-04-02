@@ -20,13 +20,25 @@ Route::get('ruleta', 'ruletaController@index');
 Route::get('ruleta/juega', 'ruletaController@juega');
 Route::get('ruleta/ayuda', 'ruletaController@ayuda');
 Route::get('ruleta/reclama', 'ruletaController@reclama');
-Route::get('luz/{estado}', function($estado) {
-    $file=fopen("luz.txt", "w");
-    fwrite($file, $estado);
 
-    echo file_get_contents("luz.txt");
 
+
+Route::get('luz', function() {
+	echo file_get_contents("luz.txt");
 });
+
+Route::get('luz/on', function() {
+
+   $file=fopen("luz.txt", "w");
+   fwrite($file, "1");
+});
+Route::get('luz/off', function() {
+
+   $file=fopen("luz.txt", "w");
+   fwrite($file, "0");
+});
+
+
 Route::post('ruleta/reclama', 'ruletaController@store');
 
 
