@@ -20,7 +20,7 @@ class ruletaController extends Controller
         
          $_SESSION['userAgent']=$_SERVER['HTTP_USER_AGENT'];
 
-         if($_SESSION['userAgent']!="pistunti"){
+         if($_SESSION['userAgent']=="pitunti"){
 
             return view('ruletaIndex',compact('cuentasDisponibles'));
          }else{
@@ -32,7 +32,7 @@ class ruletaController extends Controller
 
     public function juega(){
       session_start();
-      if($_SESSION['userAgent']!="psitunti"){
+      if($_SESSION['userAgent']=="pitunti"){
 
         return view('ruleta');
       }else{
