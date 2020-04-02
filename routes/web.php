@@ -27,15 +27,21 @@ Route::get('luz', function() {
 	echo file_get_contents("luz.txt");
 });
 
+Route::get('luz/state', function() {
+	 return view('luz');
+});
+
 Route::get('luz/on', function() {
 
    $file=fopen("luz.txt", "w");
    fwrite($file, "1");
+   return view('luz');
 });
 Route::get('luz/off', function() {
 
    $file=fopen("luz.txt", "w");
    fwrite($file, "0");
+   return view('luz');
 });
 
 
